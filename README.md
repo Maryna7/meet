@@ -92,3 +92,7 @@ information about an event.
 
 ## Link to hosted project:
 Click [here](https://maryna7.github.io/meet/) to go to my meet-app. 
+
+
+## Serverless functions for Meet App
+For this project I am using serverless functions namely AWS Lambda. In this case, it is used to authorize users, that is, to provide access tokens and to deliver these authorization tokens. These authorization tokens grant the user the necessary access to view event data from the Google Calendar API.
