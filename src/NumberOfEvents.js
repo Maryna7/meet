@@ -25,7 +25,7 @@ class NumberOfEvents extends Component {
       query = input;
       this.setState({ errorText: '' });
     }
-    this.props.updateEvents(query);
+    this.props.updateEventCount(query);
   };
 
   render() {
@@ -38,6 +38,7 @@ class NumberOfEvents extends Component {
           type="number"
           value={this.state.query}
           onChange={this.handleInputChanged}
+          placeholder={'number of events'}
         />
         <p
           className="AlertText"
