@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
 .App {
   text-align: center;
-  padding: 2% 5%;
+  padding: 5%;
 }
 
 .App * {
@@ -47,6 +47,19 @@ input[type="number"] {
   max-width: 300px;
   margin: auto;
   position: relative;
+}
+
+.CitySearch .Alert {
+  bottom: 100%;
+}
+
+.NumberOfEventsHolder{
+  margin-bottom: 35px;
+}
+
+.NumberOfEventsHolder  .Alert{
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .suggestions {
@@ -129,8 +142,7 @@ input[type="number"] {
 }
 
 .Alert {
-  position: fixed;
-  top: 20px;
+  position: absolute;
 }
 
 .data-vis-wrapper {
