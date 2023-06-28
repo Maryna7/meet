@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
 .App {
   text-align: center;
-  padding: 5%;
+  padding: 45px 5%;
 }
 
 .App * {
@@ -60,6 +60,7 @@ input[type="number"] {
 .NumberOfEventsHolder  .Alert{
   left: 50%;
   transform: translateX(-50%);
+  width: 100%;
 }
 
 .suggestions {
