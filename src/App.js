@@ -28,15 +28,6 @@ class App extends Component {
         events: locationEvents
       });
     });
-    if (!navigator.onLine) {
-      this.setState({
-        warningText: 'You have no internet connection. Events list has been loaded from the cache.'
-      })
-    } else {
-      this.setState({
-        warningText: ''
-      });
-    }
   }
 
   updateEventCount = (eventCount) => {
@@ -48,16 +39,25 @@ class App extends Component {
     getEvents().then((events) => {
       this.setState({ events, locations: extractLocations(events) });
     });
+    window.addEventListener('online', this.setOfflineWarningMessage);
+    window.addEventListener('offline', this.setOfflineWarningMessage);
   }
 
   componentWillUnmount() {
     this.mounted = false;
+    window.removeEventListener('online', this.setOfflineWarningMessage);
+    window.removeEventListener('offline', this.setOfflineWarningMessage);
   }
 
   setOfflineWarningMessage = () => {
+    console.log(this);
     if (!navigator.onLine) {
       this.setState({
-        warningText: 'You have no internet connection. Events list has been loaded from the cache.'
+        warningText: 'No internet connection. Events list has been loaded from the cache.'
+      })
+    } else {
+      this.setState({
+        warningText: ''
       })
     }
   }
