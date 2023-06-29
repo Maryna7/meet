@@ -5,11 +5,14 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { getEvents, extractLocations } from './api';
 import './nprogress.css';
+import { WarningAlert } from './Alert';
+
 
 class App extends Component {
   state = {
     events: [],
-    locations: []
+    locations: [],
+    warningText: ''
   }
 
   updateEvents = (location) => {
@@ -24,8 +27,16 @@ class App extends Component {
       this.setState({
         events: locationEvents
       });
-
     });
+    if (!navigator.onLine) {
+      this.setState({
+        warningText: 'You have no internet connection. Events list has been loaded from the cache.'
+      })
+    } else {
+      this.setState({
+        warningText: ''
+      });
+    }
   }
 
   updateEventCount = (eventCount) => {
@@ -43,10 +54,18 @@ class App extends Component {
     this.mounted = false;
   }
 
+  setOfflineWarningMessage = () => {
+    if (!navigator.onLine) {
+      this.setState({
+        warningText: 'You have no internet connection. Events list has been loaded from the cache.'
+      })
+    }
+  }
 
   render() {
     return (
       <div className="App">
+        <WarningAlert text={this.state.warningText} />
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
         <NumberOfEvents updateEventCount={this.updateEventCount} />
         <EventList events={this.state.events} />
