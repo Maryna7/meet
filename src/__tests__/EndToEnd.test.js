@@ -13,7 +13,7 @@ describe('show/hide an event details', () => {
     });
     page = await browser.newPage();
     await page.goto('http://localhost:3000/meet');
-    await page.waitForSelector('.event');
+    await page.waitForSelector('.App');
   });
 
   afterAll(() => {
