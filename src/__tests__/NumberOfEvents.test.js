@@ -32,7 +32,7 @@ describe('<NumberOfEvents /> component', () => {
     expect(NumberOfEventsWrapper.find('.AlertText').text()).toBe("Please select a number from 1 to 60");
   })
 
-  test('number of events is too smal', () => {
+  test('number of events is too small', () => {
     NumberOfEventsInput.simulate('change', { target: { value: 0 } });
     expect(NumberOfEventsWrapper.find('.AlertText').text()).toBe("Please select a number from 1 to 60");
   })

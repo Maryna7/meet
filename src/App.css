@@ -218,7 +218,10 @@ input[type="number"] {
   font-family: "Roboto";
 }
 
-
+.charts-container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
 
 @media only screen and (min-width: 992px) {
   .data-vis-wrapper {
@@ -229,5 +232,11 @@ input[type="number"] {
     max-width: 50%;
     min-width: auto;
     margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .charts-container {
+    grid-template-columns: 1fr 1fr;
   }
 }

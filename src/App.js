@@ -3,11 +3,11 @@ import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
+import CityEventsChart from './components/CityEventsChart';
+import EventGenresChart from './components/EventGenresChart';
 import { getEvents, extractLocations } from './api';
 import './nprogress.css';
 import { WarningAlert } from './Alert';
-
-
 class App extends Component {
   state = {
     events: [],
@@ -61,13 +61,20 @@ class App extends Component {
       })
     }
   }
-
   render() {
+
     return (
       <div className="App">
         <WarningAlert text={this.state.warningText} />
+        <h1>Meet App</h1>
+        <h4>Choose your nearest city</h4>
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
         <NumberOfEvents updateEventCount={this.updateEventCount} />
+        <h4>Events in each city</h4>
+        <div className="charts-container">
+          <EventGenresChart events={this.state.events} />
+          <CityEventsChart allLocations={this.state.locations} events={this.state.events} />
+        </div>
         <EventList events={this.state.events} />
       </div>
     );
